@@ -1,0 +1,54 @@
+/* 
+ * CALYX STANDARD // INFRASTRUCTURE SPECIFICATION SHEET LAYOUT v2.0.0
+ * TARGET_MODE: DARK_MESH_KINETIC
+ */
+
+@theme {
+  --canvas-bg: #000000;
+  --surface-card: #0a0a0c;
+  --accent-blue: #3b82f6;
+  --text-primary: #ffffff;
+  --text-muted: #a1a1aa;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  background-color: var(--canvas-bg);
+  color: var(--text-primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Static aspect-ratio framing container preventing mobile viewport clipping */
+.presentation-canvas-container {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background-color: var(--surface-card);
+  border: 1px solid #1f1f23;
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Structural fix for the 2.0 Mesh Architecture padding collapse bug */
+.multi-tier-log-item {
+  padding-top: 16px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #121214;
+}
+
+/* High-visibility contrast patch for desaturated status tags */
+.status-badge-standby {
+  color: #71717a; /* Boosted luminance profile by 10% for clear mobile viewing */
+  font-weight: 700;
+  text-transform: uppercase;
+}
