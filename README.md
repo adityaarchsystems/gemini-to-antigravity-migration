@@ -1,4 +1,7 @@
 <div align="center">
+  <p align="center">
+  <img src="assets/social-card.png" alt="Antigravity Engine Workspace Spec Layout" width="100%">
+</p>
   <code>▲ ADITYA SHARMA // CORE INFRASTRUCTURE MIGRATION // SPEC_v2.0.0</code>
 </div>
 
