@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinetic Obsidian Social Card (1200x675)</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=geist@600,500,400&f[]=geist-mono@600,500,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Kinetic Obsidian Spec Tokens */
+            --canvas: #000000;
+            --hairline: #23252a;
+            --surface-1: #0F1011;
+            --surface-2: #141516;
+            --accent: #5e6ad2;
+            --primary-soft: #bdc2ff;
+            --surface-variant: #e0dfeb; /* Luminance boost for legibility */
+            --success: #27a644;
+            --ink: #f7f8f8;
+            --ink-muted: #8a8f98;
+            --syntax-text: #d0d6e0;
+            
+            --font-geist: 'Geist', sans-serif;
+            --font-mono: 'Geist Mono', monospace;
+            
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: var(--font-geist);
+            overflow: hidden;
+        }
+
+        /* Fixed Cinematic Social Canvas */
+        .presentation-canvas {
+            width: 1200px;
+            height: 675px;
+            padding: 40px;
+            background: var(--canvas);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--hairline);
+            box-shadow: 0 0 80px rgba(0,0,0,0.8);
+        }
+
+        /* 01 // HEADER RAIL */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        .brand-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 14px solid var(--accent);
+        }
+
+        .brand-right {
+            color: var(--ink-muted);
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.05em;
+        }
+
+        /* 02 // HERO PROTOCOL */
+        .hero {
+            margin-top: 16px;
+        }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--ink-muted);
+            margin-bottom: 6px;
+            letter-spacing: 0.05em;
+        }
+
+        .headline {
+            font-size: 38px;
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+
+        .headline span {
+            color: var(--accent);
+        }
+
+        .subtext {
+            font-size: 14px;
+            color: var(--ink-muted);
+            line-height: 1.4;
+            max-width: 850px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* 03 // RUNTIME TELEMETRY SHELL */
+        .terminal-block {
+            margin-top: 12px;
+        }
+
+        .terminal-container {
+            background: var(--surface-1);
+            border: 1px solid var(--hairline);
+            border-radius: var(--radius-md);
+            height: 130px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .terminal-header {
+            height: 28px;
+            background: var(--surface-2);
+            border-bottom: 1px solid var(--hairline);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            gap: 6px;
+        }
+
+        .bullets {
+            display: flex;
+            gap: 5px;
+        }
+
+        .bullet {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .bullet-red { background: #ff5f56; }
+        .bullet-yellow { background: #ffbd2e; }
+        .bullet-green { background: #27c93f; }
+
+        .terminal-title {
+            margin-left: 6px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--ink-muted);
+        }
+
+        .terminal-body {
+            padding: 10px 16px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            line-height: 1.4;
+            color: var(--syntax-text);
+        }
+
+        .token-bold { font-weight: 700; }
+        .token-init { color: var(--accent); }
+        .token-live { color: var(--success); }
+
+        /* 04 // ECOSYSTEM LEDGER MATRIX */
+        .ledger-container {
+            margin-top: 12px;
+            background: var(--surface-1);
+            border: 1px solid var(--hairline);
+            border-radius: var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            height: 210px;
+        }
+
+        .ledger-row {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        .ledger-row:last-child {
+            border-bottom: none;
+        }
+
+        .row-content {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--ink-muted);
+        }
+
+        .row-title {
+            font-weight: 700;
+            color: var(--ink);
+            min-width: 40px;
+        }
+
+        .status-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            padding: 3px 8px;
+            border: 1px solid var(--hairline);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .badge-dim { color: var(--surface-variant); border-color: var(--hairline); }
+        .badge-active { color: var(--primary-soft); border-color: var(--primary-soft); }
+        .badge-live { color: var(--success); border-color: var(--success); }
+
+        /* 05 // SYSTEM FOOTER ANCHOR */
+        .footer {
+            margin-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--ink-muted);
+            padding-top: 12px;
+            border-top: 1px solid var(--hairline);
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="presentation-canvas">
+    <!-- HEADER RAIL -->
+    <header class="header">
+        <div class="brand-left">
+            <div class="triangle"></div>
+            <span>Aditya Sharma // Core Infrastructure</span>
+        </div>
+        <div class="brand-right">SPEC_v2.0.0</div>
+    </header>
+
+    <!-- HERO PROTOCOL -->
+    <section class="hero">
+        <div class="eyebrow">01 // TERMINAL_DEPRECATION_PROTOCOL</div>
+        <h1 class="headline">GEMINI CLI DEPRECATED.<br><span>ENTER ANTIGRAVITY.</span></h1>
+        <p class="subtext">Google transitions terminal commands to an open multi-agent architecture. Global structures route natively through parallel background mesh runtimes.</p>
+    </section>
+
+    <!-- RUNTIME SHELL -->
+    <section class="terminal-block">
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="bullets">
+                    <div class="bullet bullet-red"></div>
+                    <div class="bullet bullet-yellow"></div>
+                    <div class="bullet bullet-green"></div>
+                </div>
+                <div class="terminal-title">terminal/stderr/agy_cluster_sync.sh</div>
+            </div>
+            <div class="terminal-body">
+                <div>MAY 21 22:03:30.102  <span class="token-bold token-init">[INIT]</span>  /antigravity/mesh -> SUCCESS: Hybrid routing matrix active</div>
+                <div>MAY 21 22:03:31.405  <span class="token-bold">[EDGE]</span>  /agy/local/llama-70b -> Ingesting deterministic structural pipelines</div>
+                <div>MAY 21 22:03:32.012  <span class="token-bold">[ROUT]</span>  /agy/cloud/gemini-flash -> Streaming active context maps across shards</div>
+                <div>MAY 21 22:03:34.112  <span class="token-bold token-live">[LIVE]</span>  /agy/reason/gemini-pro-extended -> Execution loop latency: 142ms</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ECOSYSTEM MATRIX -->
+    <section class="ledger-container">
+        <div class="ledger-row">
+            <div class="row-content">
+                <span class="row-title">ADK</span>
+                <span>Type-Safe Primitives — Binds schemas directly to networks to eliminate failures.</span>
+            </div>
+            <div class="status-badge badge-dim">[STABLE]</div>
+        </div>
+        <div class="ledger-row">
+            <div class="row-content">
+                <span class="row-title">CLI</span>
+                <span>Local Shell Console — Delivers fast microsecond-accurate tracking of state loops.</span>
+            </div>
+            <div class="status-badge badge-active">[ACTIVE]</div>
+        </div>
+        <div class="ledger-row">
+            <div class="row-content">
+                <span class="row-title">IDE</span>
+                <span>Unified Visual Floor — Connects raw layout code blocks to live execution VRAM.</span>
+            </div>
+            <div class="status-badge badge-dim">[STANDBY]</div>
+        </div>
+        <div class="ledger-row">
+            <div class="row-content">
+                <span class="row-title">2.0</span>
+                <span>Mesh Architecture — Bypasses sequential loops to deploy asynchronous tracks.</span>
+            </div>
+            <div class="status-badge badge-live">[LIVE]</div>
+        </div>
+    </section>
+
+    <!-- BASELINE FOOTER -->
+    <footer class="footer">
+        <span>[ REPOSITORY: /gemini-to-antigravity-migration ]</span>
+        <span>[ TARGET_MODE: DARK_MESH_KINETIC ]</span>
+    </footer>
+</div>
+
+</body>
+</html>
